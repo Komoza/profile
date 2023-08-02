@@ -1,0 +1,7 @@
+<svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="burger">
+<path id="Line 3" d="M3 3H25" stroke="white" stroke-opacity="0.3" stroke-width="5" stroke-linecap="round"/>
+<path id="Line 4" d="M3 21H25" stroke="white" stroke-opacity="0.3" stroke-width="5" stroke-linecap="round"/>
+<path id="Line 5" d="M3 12H25" stroke="white" stroke-opacity="0.3" stroke-width="5" stroke-linecap="round"/>
+</g>
+</svg>
