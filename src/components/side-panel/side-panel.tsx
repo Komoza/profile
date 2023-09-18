@@ -1,6 +1,13 @@
 import { useRef, useState } from 'react';
+import { text } from '../../language';
+import { AppState } from '../../store/actions/types/types';
+import { useDispatch, useSelector } from 'react-redux';
+import { setLanguage } from '../../store/actions/creators/creators';
 
 export const SidePanel = () => {
+    const dispatch = useDispatch();
+    const language = useSelector((state: AppState) => state.language);
+
     const sidePanelRef = useRef<HTMLDivElement | null>(null);
     const [isOpenMenu, setIsOpenMenu] = useState(false);
 
@@ -10,28 +17,46 @@ export const SidePanel = () => {
     const handleClickClose = () => {
         if (sidePanelRef.current)
             sidePanelRef.current.style.animation =
-                'slideOut 0.3s ease-in-out forwards';
+                'slideOut 0.3s ease forwards';
         setTimeout(() => {
             setIsOpenMenu(false);
         }, 300);
     };
+    const handleClickSwitchLanguage = () => {
+        if (language === 'ru') {
+            dispatch(setLanguage('en'));
+        } else {
+            dispatch(setLanguage('ru'));
+        }
+    };
 
     return isOpenMenu ? (
         <div ref={sidePanelRef} className="side-panel">
-            <img
-                src="./public/close.svg"
-                alt="close"
-                className="side-panel__close"
-                onClick={handleClickClose}
-            />
+            <div className="side-panel__top">
+                <button
+                    onClick={handleClickSwitchLanguage}
+                    className="side-panel__switch-lang"
+                >
+                    {language.toUpperCase()}
+                </button>
+
+                <img
+                    src="./public/close.svg"
+                    alt="close"
+                    className="side-panel__close"
+                    onClick={handleClickClose}
+                />
+            </div>
+
             <div className="side-panel__text-wrap">
                 <p className="side-panel__text side-panel__text--active">
-                    Home
+                    {text[language].nav.home}
                 </p>
-                <p className="side-panel__text">About</p>
-                <p className="side-panel__text">Portfolio</p>
-                <p className="side-panel__text">Setting</p>
-                <p className="side-panel__text">Contact</p>
+                <p className="side-panel__text">{text[language].nav.about}</p>
+                <p className="side-panel__text">
+                    {text[language].nav.portfolio}
+                </p>
+                <p className="side-panel__text">{text[language].nav.contact}</p>
             </div>
             <a
                 href="https://www.figma.com/file/oqzI7J0jLyQq601xy9TUHd/Resume?type=design&node-id=1%3A2&mode=dev"

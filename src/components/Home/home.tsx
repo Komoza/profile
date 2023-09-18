@@ -1,16 +1,21 @@
+import { useSelector } from 'react-redux';
+import { text } from '../../language';
+import { AppState } from '../../store/actions/types/types';
+
 export const Home = () => {
+    const language = useSelector((state: AppState) => state.language);
     return (
         <div className="home">
             <div className="home__wrap">
-                <p className="home__hello">Hello</p>
+                <p className="home__hello">{text[language].home.hello}</p>
                 <h1 className="home__text">
-                    I'm <span className="home__text--pirple">Frontend developer</span>
+                    {text[language].home.text + ' '}
+                    <span className="home__text--pirple">
+                        {text[language].home.position}
+                    </span>
                 </h1>
                 <p className="home__description">
-                    If you've landed on this page, you're likely in need of a
-                    Frontend developer. Here, you can learn about me, explore my
-                    work, and get in touch with me. I'm eagerly looking forward
-                    to potential collaborations in the future.
+                    {text[language].home.description}
                 </p>
             </div>
         </div>
