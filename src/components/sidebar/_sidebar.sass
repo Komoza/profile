@@ -1,0 +1,163 @@
+.sidebar
+  position: relative
+  width: 360px
+  height: 100vh
+  padding: 40px
+  background-color: var(--color-sidebar-background)
+
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  align-items: center
+
+  overflow: hidden
+
+  &--closed
+    width: 90px
+    padding: 40px 10px
+
+
+  &__header
+    width: 100%
+    height: 24px
+
+    display: flex
+    align-items: center
+    gap: 15px
+
+
+  &__theme
+    width: 16px
+    height: 16px
+
+    &:hover
+      opacity: .8
+
+    & svg
+      width: 100%
+      height: 100%
+
+
+  &__lang
+    color: var(--color-text)
+    font-size: 20px
+    line-height: 24px
+    font-weight: 500
+
+    &:hover
+      opacity: .8
+
+
+  &__toggle-button
+    position: absolute
+    top: 35px
+    right: 40px
+    width: 35px
+    height: 35px
+
+    &--closed
+      right: 25px
+      transform: rotate(180deg)
+
+    &:hover
+      opacity: .8
+
+    & svg
+      width: 100%
+      height: 100%
+
+
+  &__navigation
+    width: 100%
+
+    display: flex
+    flex-direction: column
+    gap: 10px
+
+
+  &__link
+    width: 260px
+    height: 60px
+    padding: 0 15px
+    border-radius: 5px
+
+    display: flex
+    align-items: center
+    justify-content: start
+    gap: 15px
+
+    &:hover
+      background: var(--color-sidebar-button-hover)
+
+    & svg
+      width: 30px
+      height: 30px
+
+    &--closed
+      width: 70px
+      justify-content: center
+
+  &__link-text
+    color: var(--color-text)
+    font-size: 32px
+    line-height: 50px
+    font-weight: 500
+    text-align: start
+    animation: appearance .3s
+
+    &--active
+      color: var(--color-active-element)
+
+  &__design
+    width: 100%
+    height: 50px
+
+    display: flex
+    justify-content: center
+
+    &:hover
+      opacity: .8
+
+
+  &__design-link
+    text-align: center
+    font-size: 16px
+    line-height: 25px
+    font-weight: 500
+    white-space: nowrap
+
+
+    @keyframes rotateToggle
+      from
+        right: 25px
+        transform: rotate(180deg)
+      to
+        right: 40px
+        transform: rotate(0deg)
+
+    @keyframes rotateOutToggle
+      from
+        right: 40px
+        transform: rotate(0deg)
+      to
+        right: 25px
+        transform: rotate(180deg)
+
+
+    @keyframes uncompressSidebar
+      from
+        width: 90px
+      to
+        width:  360px
+
+    @keyframes compressSidebar
+      from
+        width: 360px
+      to
+        width: 90px
+
+    @keyframes appearance
+      from
+        opacity: 0
+      to
+        opacity: 1
